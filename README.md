@@ -1,2 +1,3 @@
-# unicampi-browser
-Frontend in React/Redux for Unicampi API
+# Unicampi Browser
+
+A frontend for [Unicampi API](https://github.com/gabisurita/unicampi)
