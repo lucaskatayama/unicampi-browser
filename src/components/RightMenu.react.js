@@ -37,7 +37,7 @@ const Menu = (props) => {
 Menu.propTypes = {
   menu: React.PropTypes.string,
   children: React.PropTypes.any,
-  header: React.PropTypes.string,
+  header: React.PropTypes.object,
   icon: React.PropTypes.string,
   label: React.PropTypes.object
 }

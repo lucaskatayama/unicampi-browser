@@ -68,8 +68,18 @@ let config = {
   output: { path: __dirname + '/docs/dist', filename: PROD ? '[hash].js' : 'bundle.js' },
   devtool: 'cheap-module-source-map',
   devServer: {
+    clientLogLevel: "info",
     historyApiFallback: true,
-    inline: true
+    inline: true,
+    proxy: {
+      '/api': {
+        "target": "http://gabsurita.pythonanywhere.com",
+        pathRewrite: { '^/api': '' },
+        logLevel: 'info',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   },
   resolve: {
     modules: [

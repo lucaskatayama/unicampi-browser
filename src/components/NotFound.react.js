@@ -1,11 +1,11 @@
 import React from 'react';
-import ContentWrapper from 'components/ContentWrapper.react';
+import {Content} from 'components/ContentWrapper.react';
 import {Link} from 'react-router';
 import FontAwesome from 'react-fontawesome';
 
 
 const NotFound = () => (
-  <ContentWrapper header="" subHeader="">
+  <Content>
     <div className="error-page">
       <h2 className="headline text-yellow" style={{marginTop: 0, lineHeight: '100px'}}> 404</h2>
       <div className="error-content">
@@ -18,7 +18,7 @@ const NotFound = () => (
         </p>
       </div>
     </div>
-  </ContentWrapper>
+  </Content>
 )
 
 

@@ -46,8 +46,8 @@ class Menus extends React.Component {
   }
 
   componentWillMount(){
-    this.props.listMessages();
-    this.props.listNotifications();
+    // this.props.listMessages();
+    // this.props.listNotifications();
   }
   componentDidMount(){
     // setInterval(() => {

@@ -1,24 +1,49 @@
 import React from 'react';
 
-import Content from 'components/Content.react';
-import Header from 'components/Header.react';
 
-
-const ContentWrapper = ({header, subHeader, children}) => (
-  <div>
-    <Header header={header} subHeader={subHeader} />
-    <Content>
-      {children}
-    </Content>
-  </div>
+export const Content = (props) => (
+  <section className="content">
+    {props.children}
+  </section>
 )
 
-
-ContentWrapper.propTypes = {
-  header: React.PropTypes.any,
-  subHeader: React.PropTypes.any,
-  children:React.PropTypes.any
+Content.propTypes = {
+  children: React.PropTypes.any
 }
 
 
-export default ContentWrapper;
+export const SubTitle = (props) => (
+  <small>{props.children}</small>
+)
+
+SubTitle.propTypes = {
+  children: React.PropTypes.string
+}
+
+export const Title = (props) => (
+  <h1>
+    {props.children}
+  </h1>
+)
+
+Title.propTypes = {
+  children: React.PropTypes.any
+}
+
+export const Header = (props) => (
+  <section className="content-header">
+    {props.children}
+    {/* <ol className="breadcrumb">
+      <li><a href="#"><i className="fa fa-dashboard" /> Home</a></li>
+       <li className="active">Dashboard</li>
+     </ol>*/}
+  </section>
+)
+
+
+Header.propTypes = {
+  children: React.PropTypes.element
+}
+
+
+export default {Content, Title, SubTitle, Header};

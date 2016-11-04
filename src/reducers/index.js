@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import places from 'reducers/places';
 import messages from 'reducers/messages';
 import notifications from 'reducers/notifications';
+import institutos from 'reducers/institutos';
 
-export default combineReducers({ places, messages, notifications });
+export default combineReducers({ institutos, messages, notifications });
