@@ -13,6 +13,12 @@ const Instituto = (props) => (
 )
 
 
+Instituto.propTypes = {
+  sigla: React.PropTypes.string,
+  nome: React.PropTypes.string
+}
+
+
 
 const mapStateToProps = (state) => ({
   institutos: state.institutos.institutos,
@@ -26,6 +32,12 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 class Institutos extends React.Component {
+  static propTypes = {
+    sigla: React.PropTypes.string,
+    list: React.PropTypes.func,
+    pending: React.PropTypes.bool,
+    institutos: React.PropTypes.array
+  }
 
   componentWillMount(){
     this.props.list()

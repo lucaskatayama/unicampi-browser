@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Content, Header, Title, SubTitle} from 'components/ContentWrapper.react';
 import InstitutosActions from 'actions/institutos';
-import {Link} from 'react-router';
 import Loading from 'components/Loading.react';
 
 const mapStateToProps = (state) => ({
@@ -17,6 +16,13 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 class Institutos extends React.Component {
+  static propTypes = {
+    get: React.PropTypes.func,
+    params: React.PropTypes.object,
+    pending: React.PropTypes.bool,
+    instituto: React.PropTypes.object,
+    institutos: React.PropTypesarray
+  }
 
   componentWillMount(){
     this.props.get(this.props.params.sigla)
