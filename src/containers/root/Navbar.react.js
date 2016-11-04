@@ -3,8 +3,8 @@ import Logo from 'components/Logo.react';
 import Menus from './Menus.react';
 import {Link} from 'react-router';
 
-const mini = (<span><b>T</b>Man</span>)
-const large = (<span><b>Travel</b>Man</span>);
+const mini = (<span><b>U</b>B</span>)
+const large = (<span><b>Unicampi</b>Browser</span>);
 
 const Navbar = (props) => {
   return (
