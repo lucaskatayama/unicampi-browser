@@ -40,16 +40,16 @@ const SidebarMenu = (props) => {
             return (
               <li key={id} className="active treeview">
                 <a href="#">
-                  <FontAwesome name={item.icon} /> <span>{item.text}</span>
+                  <FontAwesome tag="i" name={item.icon} /> <span>{item.text}</span>
                   <span className="pull-right-container">
-                    <FontAwesome name="angle-left" className="pull-right" />
+                    <FontAwesome tag="i" name="angle-left" className="pull-right" />
                   </span>
                 </a>
                 <ul className="treeview-menu">
                 {
                   item.children.map((child, idx) => (
                     <NavLink key={idx} to={child.link}>
-                      <FontAwesome name="circle-o" /> {child.text}
+                      <FontAwesome tag="i" name="circle-o" /> {child.text}
                     </NavLink>
                   ))
                 }
@@ -60,7 +60,7 @@ const SidebarMenu = (props) => {
           else {
             return (
               <NavLink key={id} to={item.link}>
-                  <FontAwesome name={item.icon} /> <span>{item.text}</span>
+                  <FontAwesome tag="i" name={item.icon} /> <span>{item.text}</span>
                   <span className="pull-right-container">
                   </span>
               </NavLink>
