@@ -12,7 +12,7 @@ import promise from 'redux-promise-middleware';
 import reducers from 'reducers';
 
 
-import config from './config/config';
+import config from './config';
 
 const middlewares = [
   thunk,
