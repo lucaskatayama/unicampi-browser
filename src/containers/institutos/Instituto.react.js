@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Content, Header, Title, SubTitle} from 'components/ContentWrapper.react';
 import InstitutosActions from 'actions/institutos';
 import Loading from 'components/Loading.react';
+import Disciplinas from 'containers/disciplinas/Disciplinas.react';
 
 const mapStateToProps = (state) => ({
   instituto: state.institutos.instituto,
@@ -21,7 +22,7 @@ class Institutos extends React.Component {
     params: React.PropTypes.object,
     pending: React.PropTypes.bool,
     instituto: React.PropTypes.object,
-    institutos: React.PropTypesarray
+    institutos: React.PropTypes.array
   }
 
   componentWillMount(){
@@ -37,7 +38,7 @@ class Institutos extends React.Component {
           </Title>
         </Header>
         <Content>
-
+          <Disciplinas sigla={this.props.params.sigla}/>
         </Content>
       </Loading>
     )

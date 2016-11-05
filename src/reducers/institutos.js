@@ -27,14 +27,12 @@ export default (state = defaultState, action) => {
         institutos: action.payload,
         pending: false
       }
-      break;
     case 'INSTITUTOS_GET_FULFILLED':
       return {
         ...state,
         instituto: action.payload,
         pending: false
       }
-      break;
     default:
       return state
   }

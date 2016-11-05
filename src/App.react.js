@@ -41,13 +41,12 @@ class App extends React.Component {
         <Router history={hashHistory}>
           <Route path="/" component={Root} >
             <IndexRoute component={main} />
-            <Route path='/404' component={NotFound} />
             {
               menu.filter(item => !!item.component ).map((item, idx) => {
                   return <Route key={idx} path={item.link} component={item.component} />
               })
             }
-            <Redirect from='*' to='/404' />
+            <Route path='*' component={NotFound} />
           </Route>
         </Router>
       </Provider>
