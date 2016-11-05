@@ -1,6 +1,10 @@
 # Unicampi Browser
 
-A frontend for [Unicampi API](https://github.com/gabisurita/unicampi)
+Um frontend em React/Redux
+
+# Demo
+
+[https://unicampi.github.io/unicampi-browser/dist/#/](https://unicampi.github.io/unicampi-browser/dist/#/)
 
 
 # Pré-Requisitos
