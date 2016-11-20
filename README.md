@@ -1,3 +1,5 @@
+[![Travis](https://travis-ci.org/unicampi/unicampi-browser.svg)](https://travis-ci.org/unicampi/unicampi-browser)
+
 # Unicampi Browser
 
 Um frontend em React/Redux
