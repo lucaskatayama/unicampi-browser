@@ -1,40 +1,34 @@
 const defaultInstituto = {
   sigla: '',
-  nome: ''
-}
-
+  nome: '',
+};
 
 const defaultState = {
   institutos: [],
-  instituto: defaultInstituto
-}
-
-
+  instituto: defaultInstituto,
+};
 
 export default (state = defaultState, action) => {
-
   if (action.type.match(/INSTITUTOS.*PENDING/)) {
     return {
       ...state,
-      pending: true
-    }
+      pending: true,
+    };
   }
   switch (action.type) {
-
     case 'INSTITUTOS_LIST_FULFILLED':
       return {
         ...state,
         institutos: action.payload,
-        pending: false
-      }
+        pending: false,
+      };
     case 'INSTITUTOS_GET_FULFILLED':
       return {
         ...state,
         instituto: action.payload,
-        pending: false
-      }
+        pending: false,
+      };
     default:
-      return state
+      return state;
   }
-
-}
+};

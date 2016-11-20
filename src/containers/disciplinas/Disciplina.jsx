@@ -1,34 +1,38 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import DisciplinasActions from 'actions/disciplinas';
-import Loading from 'components/Loading.react';
-import {Content, Header, Title, SubTitle} from 'components/ContentWrapper.react';
+import Loading from 'components/Loading';
+import { Content, Header, Title, SubTitle } from 'components/ContentWrapper';
 
 const mapStateToProps = (state, props) => ({
   sigla: props.params.sigla,
   disciplina: state.disciplinas.disciplina,
-  pending: state.disciplinas.pending
-})
+  pending: state.disciplinas.pending,
+});
 
-const mapDispatchToProps = (dispatch) => ({
-  get: (sigla) => dispatch(DisciplinasActions.get(sigla))
-})
-
+const mapDispatchToProps = dispatch => ({
+  get: sigla => dispatch(DisciplinasActions.get(sigla)),
+});
 
 class Disciplina extends React.Component {
 
   static propTypes = {
-    disciplina: React.PropTypes.object,
+    disciplina: React.PropTypes.shape({
+      nome: React.PropTypes.string,
+      sigla: React.PropTypes.string,
+      créditos: React.PropTypes.number,
+      ementa: React.PropTypes.string,
+    }),
     sigla: React.PropTypes.string,
     get: React.PropTypes.func,
-    pending: React.PropTypes.bool
+    pending: React.PropTypes.bool,
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.props.get(this.props.sigla);
   }
 
-  render(){
+  render() {
     return (
       <Loading pending={this.props.pending}>
         <Header>
@@ -42,9 +46,8 @@ class Disciplina extends React.Component {
           <p>{this.props.disciplina.ementa}</p>
         </Content>
       </Loading>
-    )
+    );
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Disciplina);

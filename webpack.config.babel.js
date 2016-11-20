@@ -60,11 +60,8 @@ let alias = {
   'jquery-ui': __dirname + '/node_modules/jquery-ui/ui/core.js'
 }
 
-
-
-
 let config = {
-  entry: './src/index.react.js',
+  entry: './src/index.jsx',
   output: { path: __dirname + '/docs/dist', filename: PROD ? '[hash].js' : 'bundle.js' },
   devtool: 'cheap-module-source-map',
   devServer: {
@@ -82,6 +79,9 @@ let config = {
     }
   },
   resolve: {
+    extensions: [
+      '.jsx', '.js'
+    ],
     modules: [
       path.resolve('./src'),
       path.resolve('./node_modules')

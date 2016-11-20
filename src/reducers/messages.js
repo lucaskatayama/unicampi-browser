@@ -1,27 +1,21 @@
 const stateDefault = {
-  messages: []
-}
-
+  messages: [],
+};
 
 const messages = (state = stateDefault, action) => {
   switch (action.type) {
     case 'LIST_MESSAGES_FULFILLED':
       return {
         ...state,
-        messages: action.payload
-      }
+        messages: action.payload,
+      };
     case 'MARK_MESSAGES_READ_FULFILLED':
       return {
-        ...state
-      }
+        ...state,
+      };
     default:
       return state;
   }
-}
-
-
-
-
-
+};
 
 export default messages;

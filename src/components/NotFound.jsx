@@ -1,13 +1,12 @@
 import React from 'react';
-import {Content} from 'components/ContentWrapper.react';
-import {Link} from 'react-router';
+import { Content } from 'components/ContentWrapper';
+import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome';
-
 
 const NotFound = () => (
   <Content>
     <div className="error-page">
-      <h2 className="headline text-yellow" style={{marginTop: 0, lineHeight: '100px'}}> 404</h2>
+      <h2 className="headline text-yellow" style={{ marginTop: 0, lineHeight: '100px' }}> 404</h2>
       <div className="error-content">
         <h3><FontAwesome name="warning" className="text-yellow" /> Oops! Page not found.</h3>
         <p>
@@ -19,7 +18,6 @@ const NotFound = () => (
       </div>
     </div>
   </Content>
-)
-
+);
 
 export default NotFound;

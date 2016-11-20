@@ -1,59 +1,51 @@
 import React from 'react';
-
-import UserImage from './UserImage.react';
 import FontAwesome from 'react-fontawesome';
 import Moment from 'react-moment';
 import gravatar from 'utils/gravatar';
+import UserImage from 'components/UserImage';
 /**
 * Generic Menu
 */
-const Menu = (props) => {
-  return (
-    <li className={"dropdown "+props.menu+"-menu"}>
-      <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-        <FontAwesome name={props.icon} />
-        {
-            props.label.value ?
-              <span className={"label label-"+props.label.status}>{props.label.value}</span>
-              :
-              <span></span>
-        }
-
-      </a>
-      <ul className="dropdown-menu">
-        <li className="header">{props.header}</li>
-        <li>
-          <ul className="menu">
-            {props.children}
-          </ul>
-        </li>
-        {/*<li className="footer"><a href="#">See All Messages</a></li>*/}
-      </ul>
-    </li>
-  )
-}
+const Menu = props => (
+  <li className={`dropdown ${props.menu}-menu`}>
+    <a href="" className="dropdown-toggle" data-toggle="dropdown">
+      <FontAwesome name={props.icon} />
+      {
+        props.label.value ?
+          <span className={`label label-${props.label.status}`}>{props.label.value}</span>
+          :
+            <span />
+      }
+    </a>
+    <ul className="dropdown-menu">
+      <li className="header">{props.header}</li>
+      <li>
+        <ul className="menu">
+          {props.children}
+        </ul>
+      </li>
+    </ul>
+  </li>
+);
 
 
 Menu.propTypes = {
   menu: React.PropTypes.string,
-  children: React.PropTypes.any,
-  header: React.PropTypes.object,
+  children: React.PropTypes.node,
+  header: React.PropTypes.node,
   icon: React.PropTypes.string,
-  label: React.PropTypes.object
-}
-
+  label: React.PropTypes.node,
+};
 
 
 /** Message **/
 const Message = (props) => {
-
-
-  let imgSrc = gravatar(props.msg.userImage);
+  const imgSrc = gravatar(props.msg.userImage);
   return (
     <li>
       <a href="#">
         <div className="pull-left">
-          <img src={imgSrc} className="img-circle" alt="User Image" />
+          <img src={imgSrc} className="img-circle" alt="User" />
         </div>
         <h4>
           {props.msg.from}

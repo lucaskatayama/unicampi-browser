@@ -1,10 +1,7 @@
 const defaultState = {
   disciplinas: [],
-  disciplina: {}
-}
-
-
-
+  disciplina: {},
+};
 
 export default (state = defaultState, action) => {
   if (action.type.match(/DISCIPLINAS_.*_PENDING/)) {
@@ -12,8 +9,8 @@ export default (state = defaultState, action) => {
       ...state,
       disciplinas: [],
       disciplina: {},
-      pending: true
-    }
+      pending: true,
+    };
   }
 
   switch (action.type) {
@@ -21,15 +18,15 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         disciplinas: [...action.payload],
-        pending: false
-      }
+        pending: false,
+      };
     case 'DISCIPLINAS_GET_FULFILLED':
       return {
         ...state,
         disciplina: action.payload,
-        pending: false
-      }
+        pending: false,
+      };
     default:
       return state;
   }
-}
+};
