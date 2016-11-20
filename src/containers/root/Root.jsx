@@ -7,18 +7,19 @@ import 'admin-lte/dist/css/AdminLTE.min.css';
 import 'admin-lte/dist/css/skins/skin-blue.min.css';
 
 import React from 'react';
+import { connect } from 'react-redux';
 import menu from 'config/menu';
+
+import AppActionCreator from 'actions/app';
 
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import Control from './Control';
 
-const version = '1.0.0';
-
 const Footer = props => (
   <footer className="main-footer">
     <div className="pull-right hidden-xs">
-      Version <b>{props.version}</b>
+      API Version <b>{props.version}</b>
     </div>
     All rights reserved.
   </footer>
@@ -28,10 +29,19 @@ Footer.propTypes = {
   version: React.PropTypes.string,
 };
 
+const mapStateToProps = state => ({
+  version: state.app.version,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getVersion: () => dispatch(AppActionCreator.getVersion()),
+});
 
 class Root extends React.Component {
   static propTypes = {
     children: React.PropTypes.node,
+    version: React.PropTypes.string,
+    getVersion: React.PropTypes.func,
   };
 
   constructor() {
@@ -42,6 +52,10 @@ class Root extends React.Component {
       sidebar,
       control: false,
     };
+  }
+
+  componentWillMount() {
+    this.props.getVersion();
   }
 
   toggleSidebar = () => {
@@ -60,12 +74,11 @@ class Root extends React.Component {
         <div className="content-wrapper ">
           {this.props.children}
         </div>
-        <Footer version={version} />
+        <Footer version={this.props.version} />
         <Control open={this.state.control} />
       </div>
     );
   }
 }
 
-
-export default Root;
+export default connect(mapStateToProps, mapDispatchToProps)(Root);

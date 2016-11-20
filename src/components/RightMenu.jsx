@@ -34,7 +34,10 @@ Menu.propTypes = {
   children: React.PropTypes.node,
   header: React.PropTypes.node,
   icon: React.PropTypes.string,
-  label: React.PropTypes.node,
+  label: React.PropTypes.shape({
+    status: React.PropTypes.string,
+    value: React.PropTypes.any,
+  }),
 };
 
 
@@ -57,121 +60,120 @@ const Message = (props) => {
         <p>{props.msg.message}</p>
       </a>
     </li>
-  )
-}
+  );
+};
 
 Message.propTypes = {
   msg: {
     userImage: React.PropTypes.string,
     from: React.PropTypes.string,
     createdAt: React.PropTypes.string,
-    message: React.PropTypes.string
-  }
+    message: React.PropTypes.string,
+  },
 
-}
+};
 
 export const MessagesMenu = (props) => {
-  let header = (
+  const header = (
     <p>
       {`You have ${props.messages.length} message(s)`}
       <a className="pull-right" onClick={props.onAllRead}>Mark all as read</a>
     </p>
-  )
+  );
   return (
-    <Menu menu="messages" icon="envelope-o"
-      label={{status: 'success', value: props.messages.length}}
-      header={header} >
-
-      {props.messages.map((m, idx) => <Message key={idx} msg={m}/>)}
+    <Menu
+      menu="messages"
+      icon="envelope-o"
+      label={{ status: 'success', value: props.messages.length }}
+      header={header}
+    >
+      { props.messages.map((m, idx) => <Message key={idx} msg={m} />) }
     </Menu>
-  )
-}
+  );
+};
 
 MessagesMenu.propTypes = {
-  messages: React.PropTypes.array,
-  onAllRead: React.PropTypes.func
-}
+  messages: React.PropTypes.arrayOf(React.PropTypes.object),
+  onAllRead: React.PropTypes.func,
+};
 
 /** Notification **/
-const Notification = (props) => {
-  return (
-    <li>
-      <a href="#">
-        <i className={`fa fa-${props.icon.icon} text-${props.icon.color}`} /> {props.notification}
-      </a>
-    </li>
-  )
-}
+const Notification = props => (
+  <li>
+    <a href="#">
+      <i className={`fa fa-${props.icon.icon} text-${props.icon.color}`} /> {props.notification}
+    </a>
+  </li>
+);
 
 Notification.propTypes = {
   icon: {
     icon: React.PropTypes.string,
-    color: React.PropTypes.string
+    color: React.PropTypes.string,
   },
-  notification: React.PropTypes.string
-}
+  notification: React.PropTypes.string,
+};
 
 export const NotificationsMenu = (props) => {
-  let header = (
+  const header = (
     <p>
       {`You have ${props.notifications.length} notification(s)`}
       <a className="pull-right" onClick={props.onAllRead}>Mark all as read</a>
     </p>
-  )
+  );
   return (
-    <Menu menu="notifications" icon="bell-o"
-      label={{status: 'warning', value: props.notifications.length}}
-      header={header} >
+    <Menu
+      menu="notifications"
+      icon="bell-o"
+      label={{ status: 'warning', value: props.notifications.length }}
+      header={header}
+    >
 
       {
-        props.notifications.map((m, idx) => {
-          return <Notification key={idx} icon={{color: 'aqua', icon: 'user'}} notification={m.notification}/>
-        })
+        props.notifications
+        .map((m, idx) => <Notification key={idx} icon={{ color: 'aqua', icon: 'user' }} notification={m.notification} />,
+        )
       }
     </Menu>
-  )
-}
+  );
+};
 
 NotificationsMenu.propTypes = {
-  notifications: React.PropTypes.array,
-  onAllRead: React.PropTypes.func
-}
+  notifications: React.PropTypes.arrayOf(React.PropTypes.object),
+  onAllRead: React.PropTypes.func,
+};
 
 /** Tasks **/
-const Task = (props) => {
-  return (
-    <li>
-      <a href="#">
-        <h3>
-          {props.title}
-          <small className="pull-right">{props.progress}</small>
-        </h3>
-        <div className="progress xs">
-          <div className="progress-bar progress-bar-aqua" style={{width: props.progress}} role="progressbar" aria-valuenow={20} aria-valuemin={0} aria-valuemax={100}>
-            <span className="sr-only">{props.progress} Complete</span>
-          </div>
+const Task = props => (
+  <li>
+    <a href="#">
+      <h3>
+        {props.title}
+        <small className="pull-right">{props.progress}</small>
+      </h3>
+      <div className="progress xs">
+        <div className="progress-bar progress-bar-aqua" style={{ width: props.progress }} role="progressbar" aria-valuenow={20} aria-valuemin={0} aria-valuemax={100}>
+          <span className="sr-only">{props.progress} Complete</span>
         </div>
-      </a>
-    </li>
-  )
-}
+      </div>
+    </a>
+  </li>
+);
 
 Task.propTypes = {
   title: React.PropTypes.string,
-  progress: React.PropTypes.string
-}
+  progress: React.PropTypes.string,
+};
 
-export const TasksMenu = (props) => {
-  return (
-    <Menu menu="tasks" icon="flag-o" label={{value: props.tasks.length, status: 'danger'}} header={`You have ${props.tasks.length} tasks`}>
-      {props.tasks.map((t, idx) => <Task key={idx} {...t} />)}
-    </Menu>
-  )
-}
+export const TasksMenu = props => (
+  <Menu menu="tasks" icon="flag-o" label={{ value: props.tasks.length, status: 'danger' }} header={`You have ${props.tasks.length} tasks`}>
+    {props.tasks.map((t, idx) => <Task key={idx} {...t} />)}
+  </Menu>
+);
 
 TasksMenu.propTypes = {
-  tasks: React.PropTypes.array
-}
+  tasks: React.PropTypes.arrayOf(React.PropTypes.object),
+};
 
 
 export const UserAccountMenu = (props) => {
@@ -217,9 +219,9 @@ export const UserAccountMenu = (props) => {
         </li>
       </ul>
     </li>
-  )
-}
+  );
+};
 
 UserAccountMenu.propTypes = {
-  email: React.PropTypes.string
-}
+  email: React.PropTypes.string,
+};
